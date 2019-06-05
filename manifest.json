@@ -1,0 +1,47 @@
+{
+    "name": "MockInput", 
+    "version": "1.01", 
+    "manifest_version": 2, 
+    "description": "右键录入输入框数据，烦人的手动输入", 
+    "icons": {
+        "16": "image/icon-16.png",
+        "48": "image/icon-48.png",
+        "128": "image/icon-128.png"
+    },
+    "browser_action": {
+        "default_icon": "image/icon-128.png",
+        "default_title": "右键输入mock数据",
+        "default_popup": "html/browser.html"
+    },
+    "background": {
+        "scripts": [
+            "js/menu.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "js/content.js"
+            ]
+        }
+    ],
+    "homepage_url": "https://notes.tingno.com",
+    "incognito": "spanning", 
+    "offline_enabled": true, 
+    "options_page": "html/setting.html",
+    "options_ui":{
+        "page": "html/setting.html",
+        "chrome_style": true
+    },
+    "permissions": [
+        "*://*/*",
+        "contextMenus",
+        "tabs",
+        "activeTab",
+        "storage",
+        "notifications"
+    ]
+}
