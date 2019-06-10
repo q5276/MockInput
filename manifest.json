@@ -25,7 +25,8 @@
             ],
             "js": [
                 "js/content.js"
-            ]
+            ],
+            "all_frames": true
         }
     ],
     "homepage_url": "https://notes.tingno.com",
