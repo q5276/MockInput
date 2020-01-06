@@ -1,6 +1,6 @@
 {
     "name": "MockInput", 
-    "version": "1.01", 
+    "version": "1.2",
     "manifest_version": 2, 
     "description": "右键录入输入框数据，烦人的手动输入", 
     "icons": {

@@ -1,4 +1,5 @@
-var mockContent = null
+var mockContent = new EventTarget();
+
 function randomName() {
     var first =
         "李王张刘陈杨赵黄周吴徐孙胡朱高林何郭马罗梁宋郑谢韩唐冯于董萧程曹袁邓许傅沈曾彭吕苏卢蒋蔡贾丁魏薛叶阎余潘杜戴夏钟汪田任姜范方石姚谭廖邹熊金陆郝孔白崔康毛邱秦江史顾侯邵孟龙万段漕钱汤尹黎易常武乔贺赖龚文";
@@ -80,13 +81,6 @@ function randomPerson(sex, min, max) {
         return total + (index === 17 ? 0 : Math.pow(2, 17 - index) % 11 * value);
     }, 0) % 11) % 11;
     sign = sign === 10 ? 'x' : sign;
-    // return {
-    //     area: areas[areasId],
-    //     birthday: year + "-" + month + "-" + day,
-    //     sex: seqCode % 2 === 1 ? "男" : "女",
-    //     idCard: firstCard + sign,
-    //     age: new Date().getFullYear() - year
-    // };
     return firstCard + sign
 };
 
@@ -124,19 +118,6 @@ async function trueIdCard(){
 }
 
 chrome.extension.onMessage.addListener(function(request, _, response) {
-    if(!request.isStorge){
-        mockContent.value = eval(request.info.menuItemId + '()')
-        mockContent.dispatchEvent(new Event('input'))
-    }else{
-        eval(request.info.menuItemId + '()')
-    }    
+    console.log(document.activeElement);
+    document.activeElement.value = eval(request.info.menuItemId + '()');
 });
-
-(function(){
-    var inputs = document.getElementsByTagName('input')
-    for(var i=0; i< inputs.length; i++){
-        inputs[i].addEventListener('contextmenu',function(){
-            mockContent = this
-        })
-    }
-})()
