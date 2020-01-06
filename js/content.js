@@ -118,6 +118,7 @@ async function trueIdCard(){
 }
 
 chrome.extension.onMessage.addListener(function(request, _, response) {
-    console.log(document.activeElement);
+    console.log('执行了方法', document.activeElement);
     document.activeElement.value = eval(request.info.menuItemId + '()');
+    document.activeElement.dispatchEvent(new Event('input'));
 });

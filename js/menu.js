@@ -60,9 +60,11 @@ chrome.contextMenus.create({
 });
 
 function genericOnClick(info, tab) {
+    console.log('点击了：genericOnClick');
     chrome.tabs.sendMessage(tab.id, {'tab':tab,  'info': info , 'isStorge': false});
 }
 
 function genericOnClickStorge(info, tab) {
+    console.log('点击了：genericOnClickStorge');
     chrome.tabs.sendMessage(tab.id, {'tab':tab,  'info': info , 'isStorge': true});
 }
